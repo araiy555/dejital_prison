@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-xmpz(vhw8hy4_xlt*bio#b$a#4!w9f6$wdn412ns^q!j+=mgyg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'bbs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -127,3 +128,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ALLOWED_ORIGINS = ['http://*', 'https://*']
+CSRF_TRUSTED_ORIGINS = ALLOWED_ORIGINS.copy()
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
