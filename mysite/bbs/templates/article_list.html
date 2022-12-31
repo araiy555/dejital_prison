@@ -19,6 +19,35 @@
         <td>{{ article.content }}</td>
     </tr>
     {% endfor %}
+
 </table>
+
+<div class="paginator">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        {% if object_list.has_previous %}
+        <a class="pagination-previous" href="?p={{ object_list.previous_page_number }}">Previous</a>
+        {% endif %}
+        {% if object_list.has_next %}
+        <a class="pagination-next" href="?p={{ object_list.next_page_number }}">Next</a>
+        {% endif %}
+        <ul class="pagination-list">
+            {% if object_list.has_previous %}
+            {% if object_list.previous_page_number != 1 %}
+            <li><a class="pagination-link" href="?p=1">1</a></li>
+            <li><span class="pagination-ellipsis">&hellip;</span></li>
+            {% endif %}
+            <li><a class="pagination-link" href="?p={{ object_list.previous_page_number }}">{{ object_list.previous_page_number }}</a></li>
+            {% endif %}
+            <li><a class="pagination-link is-current" href="?p={{ object_list.number }}" >{{ object_list.number }}</a></li>
+            {% if object_list.has_next %}
+            <li><a class="pagination-link" href="?p={{ object_list.next_page_number }}">{{ object_list.next_page_number }}</a></li>
+            {% if object_list.next_page_number != object_list.paginator.num_pages %}
+            <li><span class="pagination-ellipsis">&hellip;</span></li>
+            <li><a class="pagination-link" href="?p={{ object_list.paginator.num_pages }}">{{ object_list.paginator.num_pages }}</a></li>
+            {% endif %}
+            {% endif %}
+        </ul>
+    </nav>
+</div>
 
 {% endblock %}

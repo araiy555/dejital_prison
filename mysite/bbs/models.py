@@ -12,6 +12,7 @@ class Post(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length = 200)
     content = models.TextField(max_length=1000)
+    image = models.ImageField(upload_to='img/' ,null=True)
 
     author = models.ForeignKey(
         'auth.User',
@@ -28,3 +29,4 @@ class Comment(models.Model):
 
 def __str__(self):
     return self.text[:20]
+
