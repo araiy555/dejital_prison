@@ -11,7 +11,9 @@
 <body>
 <nav class='navbar navbar-expand-sm navbar-dark bg-dark fixed-top'>
     <a class='navbar-brand' href='{% url "bbs:index" %}'>BBS TOP</a>
-    <a class='navbar-brand' href='{% url "bbs:create" %}'>新規登録</a>
+    {% if user.is_superuser %}
+        <a class='navbar-brand' href='{% url "bbs:create" %}'>新規登録</a>
+    {% endif %}
     <form action='{% url "bbs:search" %}' method="GET">{% csrf_token %}
         {{ search_form.as_p }}
         <button type="submit">送信</button>

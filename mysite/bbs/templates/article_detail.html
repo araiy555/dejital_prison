@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
@@ -15,6 +16,9 @@
     <p>{{ article.content }}</p>
     <p>{{ article.title }}</p>
     <p>{{ article.author }}</p>
+    <p>{{ article.image }}</p>
+    <img src="/media/{{ article.image }}"/>
+
     <p>{{ article.created_at|date:"Y-m-j H:i:s" }}<br>
         {{ article.updated_at|date:"Y-m-j H:i:s" }}</p>
 </div>

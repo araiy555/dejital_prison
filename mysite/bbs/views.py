@@ -9,6 +9,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
+
      posts = Article.objects.all()
      search_form = SearchForm()
 
@@ -32,7 +33,7 @@ def detail(request, id):
 
 def create(request):
      if request.method == "POST":
-         form = Contact_Form(request.POST)
+         form = Contact_Form(request.POST, request.FILES)
          if form.is_valid():
              form.save()
              messages.success(request, '登録内容を保存しました。')
@@ -43,7 +44,7 @@ def create(request):
 def update(request, id):
     article = get_object_or_404(Article, id=str(id))
     if request.method == "POST":
-         form = Contact_Form(request.POST, instance=article)
+         form = Contact_Form(request.POST, request.FILES, instance=article)
          if form.is_valid():
             form.save()
             messages.success(request, '登録内容を変更しました。')

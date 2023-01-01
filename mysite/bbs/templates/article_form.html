@@ -9,7 +9,7 @@
 </ul>
 {% endif %}
 
-<form action='{% url "bbs:create" %}' method="POST">{% csrf_token %}
+<form action='{% url "bbs:create" %}' method="POST" enctype="multipart/form-data">{% csrf_token %}
     {{ form.as_p }}
     <button type="submit">送信</button>
 </form>

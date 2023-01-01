@@ -11,7 +11,7 @@ class Contact_Form(forms.ModelForm):
         model = Article
 
         #②表示するモデルクラスのフィールドを定義
-        fields = ('id','title','content','author')
+        fields = ('id','title','content','image','author')
 
 class CommentCreateForm(forms.ModelForm):
     """コメントフォーム"""
